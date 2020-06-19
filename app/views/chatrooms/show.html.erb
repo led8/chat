@@ -5,8 +5,8 @@
 </p>
 
 <div data-behavior="messages">
-  <% 1.upto(100) do %>
-    <div><strong>Arthur:</strong> Hello world!</div>
+  <% @chatroom.messages.order(created_at: :desc).limit(100).reverse.each do |message| %>
+    <div><strong><%= current_user.username %> : </strong><%= message.body %></div>
   <% end %>
 </div>
 
